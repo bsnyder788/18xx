@@ -31,6 +31,12 @@ services:
     <<: *rack
     command: bundle exec ruby queue.rb
 
+  pg-exporter:
+    environment:
+      DATA_SOURCE_URI: db:5432/$POSTGRES_DB?sslmode=disable
+      DATA_SOURCE_USER: $POSTGRES_USER
+      DATA_SOURCE_PASS: $POSTGRES_PASS
+
   db:
     environment:
       - POSTGRES_USER

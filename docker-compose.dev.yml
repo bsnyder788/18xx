@@ -20,8 +20,15 @@ services:
     <<: *rack
     command: bundle exec ruby queue.rb # bundle exec rerun --background -i 'build/*' -i 'public/*' 'ruby queue.rb'
 
+  pg-exporter:
+    environment:
+      DATA_SOURCE_URI: db:5432/18xx_development?sslmode=disable
+      DATA_SOURCE_USER: root
+      DATA_SOURCE_PASS: password
+
   db:
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
       POSTGRES_DB: 18xx_development
+
